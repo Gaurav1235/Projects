@@ -29,11 +29,38 @@ public class Factory {
 	
 }
 Interface FactoryValidators{
-    bool validate(Address a);
+    public static bool validate(Address a);
 }
 public class INval implements FactoryValidators{
     // code to validate indian addresses
+    public static bool Validate(Address a) {
+    	return ( ZipValid.validate(a.zipcode) && CountryValid.validate(a.country)&& CityValid.validate(a.city) );
+    }
 }
 public class USval implements FactoryValidators{
     // code to validate us addresses
+}
+class ZipValid {
+	
+	public static bool validate(String zip) {
+		Set<String> s=RI.RIinstance().zipcodes;
+		//check
+		//return 1/0
+	}
+	
+}
+class RI {
+	static Set<String> zipcodes;
+	static RI r;
+	private RI() {
+		//create a connection with db
+		//db query -> close the connection 
+		//initialize the list //this.zipcodes= fetch from db
+	}
+	public static RI RIinstance() {
+		if(r==NULL)
+			RI r=new RI();
+		return r;
+	}
+	
 }
