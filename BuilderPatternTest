@@ -1,0 +1,12 @@
+public class Test {
+	public static void main(String[] args) {
+		
+		Bird b=new Bird.Builder("Eagle").setWt(20).setType("Fly").setWt(10).build();
+		//Bird b=new Bird.Builder("Eagle").setWt(20).setName("Sparrow").setType("Fly").setWt(10).build();
+		System.out.println(b.getName());
+		System.out.println(b.getWt());
+		System.out.println(b.getType());
+		
+	}
+
+}
