@@ -1,0 +1,61 @@
+// Builder Pattern:
+
+public class Bird {
+	
+	private int wt;
+	private String name;
+	private String type;
+	
+	public Bird(Builder obj) {
+		this.wt=obj.getWt();
+		this.name=obj.getName();
+		this.type=obj.getType();
+	}
+	public int getWt() {
+		return this.wt;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public String getType() {
+		return this.type;
+	}
+	static class Builder {
+		
+		private int wt;
+		private String name;
+		private String type;
+		
+		public Builder(String name) {
+			this.name=name;
+		}
+		public Builder setWt(int wt) {
+			this.wt=wt;
+			return this;
+		}
+		public Builder setName(String name) {
+			this.name=name;
+			return this;
+		}
+		public Builder setType(String type) {
+			this.type=type;
+			return this;
+		}
+		public int getWt() {
+			return this.wt;
+		}
+		public String getName() {
+			return this.name;
+		}
+		public String getType() {
+			return this.type;
+		}
+		public Bird build() {
+			Bird b=new Bird(this);
+			return b;
+		}
+		
+	}
+
+	
+}
