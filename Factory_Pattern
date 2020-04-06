@@ -1,0 +1,39 @@
+public class Order_Team {
+	bool validate(Address a) {
+		return Factory.getInstance().getValidator(a.country).validate(a);	
+	}
+}	
+
+public class Factory {
+
+	static Factory f;
+  static map<String,FactoryValidators> ctov;
+	private Factory() {
+		ctov.put("US",new USval());
+		ctov.put("IN",new INval());
+	}
+	public static Factory getInstance() {
+		if(f==NULL) {
+			f = new Factory(); 
+		}
+		return f;
+	}
+	public FactoryValidator getValidator(String C) {
+		if(ctov.containsKey(C)) {
+			return ctov.get(C);
+		}
+		else {
+			throw an exception("Country Code Not Found");
+		}
+	}
+	
+}
+Interface FactoryValidators{
+    bool validate(Address a);
+}
+public class INval implements FactoryValidators{
+    // code to validate indian addresses
+}
+public class USval implements FactoryValidators{
+    // code to validate us addresses
+}
